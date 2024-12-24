@@ -44,7 +44,7 @@ If your distro has the ability to source local grub cfg files, this method is re
 
 > [!NOTE]
 > For Fedora and other **distros without the update-grub script**
-> use `grub2-mkconfig -o /boot/grub2/grub.cfg`
+> use `sudo grub2-mkconfig -o /boot/grub2/grub.cfg`
 
 5. Reboot system: `reboot`
 
