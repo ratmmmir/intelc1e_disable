@@ -5,6 +5,30 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
+cat << "EOF"
+  _____ __ ______ ______ _____ _  __
+ / ____/_ |  ____|  ____/ ____| |/ /
+| |     | | |__  | |__ | |    | ' / 
+| |     | |  __| |  __|| |    |  <  
+| |____ | | |____| |   | |____| . \ 
+ \_____||_|______|_|    \_____|_|\_\
+ 
+EOF
+
+echo This script contributes the intel_idle.max_cstate=1 parameter to
+echo /etc/default/grub.d/intel_idle_states_off.cfg
+echo and
+echo /etc/default/grub
+echo to disable intel c1e
+read -p "continue? (y/n): " user_input
+
+if [[ $user_input != "y" && $user_input != "Y" ]]; then
+    echo "exit..."
+    exit 0
+fi
+
+
+
 #Создание /etc/default/grub.d/intel_idle_states_off.cfg
 GRUB_D_PATH="/etc/default/grub.d"
 GRUB_FILE="$GRUB_D_PATH/intel_idle_states_off.cfg"
@@ -54,4 +78,3 @@ else
 fi
 
 echo "Done."
-
